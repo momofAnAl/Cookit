@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>This is your world</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <nav>
+		<ol>
+	        <li class="crumb"><a href="./home.html">Home</a></li>
+	        <li class="crumb"><a href="./about.html">About</a></li>
+	        <li class="crumb"><a href="./favorite.html">Favorites</a></li>
+	    </ol>
+	</nav>
+
+    <main>
+        <div class="container">
+        <h1>The world of recipes is yours!</h1>
+        <form action="" id="searchForm">
+            <input type="text" id="searchInput" placeholder="Enter ingredients">
+            <button type="button" id="submit" class="btn">Search</button>
+        </form>
+        <div id="results"></div>
+    </div>
+
+    </main>
+    
+
+    <footer>
+        <p>&copy; 2024 Cookit. All rights reserved.</p>
+    </footer>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="profile.js"></script>  
+</body>
+</html>

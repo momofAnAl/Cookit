@@ -1,0 +1,168 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+#nav-bar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+.navbar {
+    background-image: linear-gradient(to right, #c8e0fa, #028fcb);
+    padding: 0 !important;
+
+}
+.navbar-brand img {
+    height: 50px;
+    padding-left: 20px;
+}
+
+.navbar-nav li {
+    padding: 0 10px
+}
+
+.navbar-nav li a {
+    color: #fff !important;
+    font-weight: 600;
+    float: right;
+    text-align: left;
+}
+
+.navbar-toggler {
+    outline: none !important;
+}
+
+#logo-image {
+    background-color: transparent;
+    width: 100%;
+    height: auto;
+    position: center;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+}
+.about-title {
+    font-size: 18px;
+    font-family: Arial, sans-serif;
+    font-weight: 400;
+}
+
+#about {
+    background: transparent;
+    display: block;
+    border-radius: 10px;
+    padding-bottom: 50px;
+    padding-top: 50px;
+
+}
+body {
+  background-image: url("foods.jpg");
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+ol {
+  color: #028fcb;
+  font-size: 16px;
+  margin: 0;
+  text-align: left;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  color: #028fcb;
+  font-size: 45px;
+  margin: 5px;
+  text-align: center;
+  font-family: "Courier New", Courier, monospace;
+}
+
+form {
+    background-color: rgba(231, 231, 231, 0.243); 
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #5ea9f8;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+/* Add a hover effect for buttons */
+button:hover {
+  opacity: 0.8;
+}
+
+/* Extra style for the cancel button (red) */
+.cancelbtn {
+  width: auto;
+  border-radius: 80px;
+  padding: 5px 20px;
+  background-color:#fa8ecb;
+}
+
+/* Center the avatar image inside this container */
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+  border: 2px solid #ccc; /* Add border around the container */
+  padding: 10px; /* Add padding inside the container */
+}
+
+.login-container {
+  display: flex; /* Use flexbox to align items */
+  justify-content: center; /* Center items horizontally */
+  align-items: center; /* Center items vertically */
+  height: 100vh; /* Set the height of the container to 100% of the viewport height */
+}
+
+.imgcontainer {
+  text-align: center; /* Align text (and inline-block elements) to the center */
+}
+
+img.avatar {
+  width: 50%; /* Set the width of the image */
+  height: auto; /* Automatically adjust height to maintain aspect ratio */
+}
+
+/* The "Forgot password" text */
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+    display: block;
+    float: none;
+  }
+  .cancelbtn {
+    width: 100%;
+  }
+}
