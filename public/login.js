@@ -1,4 +1,4 @@
-const SERVER = "http://localhost:5432";
+const baseUrl = "http://localhost:8000";
 
 const loginForm = document.querySelector("#loginForm");
 const signupForm = document.querySelector("#sign-up-form");
@@ -29,33 +29,12 @@ if (loginForm) {
     //console.log(`${SERVER}/api/signin`);
     console.log(payload);
 
-    const response = await axios.post(`${SERVER}/api/signin`, payload);
+    const response = await axios.post(`${baseUrl}/api/signin`, payload);
     if (response.status === 200) {
-      window.location = "/profile.html";
+      window.location.href = "./profile.html";
     }
   });
 }
-
-// if (loginForm) {
-//     loginForm.addEventListener("submit", (event) => {
-//         event.preventDefault();
-//         handleLogin();
-//     });
-
-//     function handleLogin () {
-//         const username = document.getElementById("username").value;
-//         const password = document.getElementById("password").value;
-//         console.log(username, password);
-//         // Validate the username and password
-//         if (username === "anhtran" && password === "1234") {
-//             // If valid, redirect to the profile
-//             window.location.href = "profile.html";
-//         } else {
-//             // If invalid, show an error message
-//             errorMessage.textContent = "Invalid username or password.";
-//         }
-//     }
-// }
 
 if (signupForm) {
   const usernameSign = document.getElementById("unameSign");
@@ -71,7 +50,7 @@ if (signupForm) {
     usernameSign.value = "";
     passwordSign.value = "";
 
-    const response = await axios.post(`${SERVER}/api/users`, payload);
+    const response = await axios.post(`${baseUrl}/api/users`, payload);
     if (response.status === 200) {
       window.location.href = "home.html";
     }
@@ -81,7 +60,7 @@ if (signupForm) {
 if (welcomeMessage) {
   const userId = getCookieValue("userid");
   if (userId) {
-    axios.get(`${SERVER}/api/users/${userId}`).then((response) => {
+    axios.get(`${baseUrl}/api/users/${userId}`).then((response) => {
       if (response.status === 200) {
         const { username } = response.data;
         welcomeMessageElement.innerText = `Welcome: ${username}!`;

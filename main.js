@@ -1,15 +1,22 @@
-require('dotenv').config()
-const {CONNECTION_STRING} = process.env
-const Sequelize = require('sequelize')
+require('dotenv').config();
+const {LOCAL_DATABASE_USERNAME} = process.env;
+const Sequelize = require('sequelize');
 
-const sequelize = new Sequelize(CONNECTION_STRING);
+const sequelize = new Sequelize({
+  dialect: 'postgres', // Specify your database dialect
+  host: 'localhost', // Specify your database host
+  port: 5432, // Specify your database port
+  username: LOCAL_DATABASE_USERNAME, // Specify your database username
+  password: LOCAL_DATABASE_USERNAME, // Specify your database password
+  database: 'Cookit', // Specify your database name
+});
 
-/**
- * Checks user credentials and returns the id of the authenticated user
- * @param {string} username the username
- * @param {string} password the password
- * @returns the id of the user if authenticated, null otherwise
- */
+module.exports ={
+    authenticate,
+    createUser,
+    getUserInfo
+}
+
 async function authenticate(username, password) {
     const SQL = `
     SELECT id FROM users WHERE username = '${username}' AND password = '${password}';
@@ -18,16 +25,10 @@ async function authenticate(username, password) {
     const [data, ] = await sequelize.query(SQL);
     if (data.length !== 1) {
         return null;
-    }
-    
+    } 
     return data[0];
 }
 
-/**
- * creates a new user with the given username and password
- * @param {string} username the username
- * @param {string} password the password
- */
 async function createUser(username, password) {
     const SQL = `
     INSERT INTO users (username, password) VALUES ('${username}', '${password}');
@@ -36,11 +37,7 @@ async function createUser(username, password) {
     const [_, ] = await sequelize.query(SQL);
 }
 
-/**
- * gets user information by id
- * @param {number} id the user's id
- * @returns the user's information
- */
+
 async function getUserInfo(id) {
     const SQL = `
     SELECT id, username FROM users WHERE id = ${id};

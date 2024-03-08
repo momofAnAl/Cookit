@@ -7,15 +7,15 @@ module.exports = {
       "favorites",
       [
         {
-          id: 1,
+          user_id: 1,
           recipes_name: "Teriyaki Chicken",
         },
         {
-          id: 1,
+          user_id: 1,
           recipes_name: "Fish Fumet recipes",
         },
         {
-          id: 1,
+          user_id: 1,
           recipes_name: "Chicken Tenders with Creamy Honey Mustard",
         },
       ],

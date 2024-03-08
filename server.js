@@ -14,7 +14,7 @@ app.use(cors());
 app.use(cookieParser());
 app.use(express.json());
 
-// create a new user with a username and password
+
 app.post("/api/users", async (req, res) => {
   const { username, password } = req.body;
   if (username === null || password === null) {
@@ -65,5 +65,5 @@ app.post("/api/signin", async (req, res) => {
   res.status(200).end();
 });
 
-const { PORT } = process.env;
-app.listen(PORT, () => console.info(`app running on ${PORT}`));
+const { SERVER_PORT } = process.env;
+app.listen(SERVER_PORT, () => console.info(`app running on ${SERVER_PORT}`));
