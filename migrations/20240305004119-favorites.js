@@ -3,7 +3,7 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('favorites', {
-      fav_id: {
+      id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
@@ -17,8 +17,9 @@ module.exports = {
           key: 'id'
         },
       },
-      recipes_name: {
-        type: Sequelize.STRING
+      recipes_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false
       },
       createdAt: {
         allowNull: false,

@@ -29,6 +29,19 @@
     outline: none !important;
 }
 
+#social-media p {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+.social-icons img {
+width: 100px;
+transition: 0.5s;
+}
+.social-icons a:hover img {
+transform: translateY(-10px);
+}
+
 body {
     background-image: url('foods.jpg');
     background-color: #f5f5f5;

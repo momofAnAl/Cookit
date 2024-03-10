@@ -2,7 +2,12 @@ const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
 
-const { authenticate, createUser, getUserInfo } = require("./main.js");
+const { authenticate, 
+  createUser, 
+  getUserInfo, 
+  getfavoritesByuserId, 
+  insertUserFavorites } = require("./main.js");
+
 const cookieParser = require("cookie-parser");
 
 const USERID_KEY = "id";
@@ -64,6 +69,22 @@ app.post("/api/signin", async (req, res) => {
   });
   res.status(200).end();
 });
+
+app.get("/api/favorites/:userId", async(req, res) => {
+  const userId = req.params.userId;
+  const userFavorites = await getfavoritesByuserId(userId);
+  console.log(userFavorites);
+
+  return res.json({userFavorites});
+});
+
+app.post("/api/favorites", async (req, res) => {
+  console.log(req.body);
+  
+  const {user_id, recipes_id} = req.body; //destructuring
+  const insertFavorites = await insertUserFavorites (user_id, recipes_id);
+  console.log(insertFavorites);
+})
 
 const { SERVER_PORT } = process.env;
 app.listen(SERVER_PORT, () => console.info(`app running on ${SERVER_PORT}`));
