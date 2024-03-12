@@ -16,7 +16,7 @@ module.exports = {
   createUser,
   getUserInfo,
   getfavoritesByuserId,
-  insertUserFavorites
+  insertUserFavorites,
 };
 
 async function authenticate(username, password) {
@@ -65,14 +65,16 @@ async function getfavoritesByuserId(userId) {
   }
 }
 
-async function insertUserFavorites(userId, recipesId) {
+async function insertUserFavorites(userId, recipeId) {
   try {
+    console.log("recipeId: ", recipeId);
     const SQL = `
-        INSERT INTO favorites (user_id, recipes_id) VALUES (${userId}, ${recipesId});
+        INSERT INTO favorites (user_id, recipe_id) VALUES (${userId}, '${recipeId}');
         `;
+    console.log("SQL: ", SQL);
     await sequelize.query(SQL);
     return {};
   } catch (error) {
-    console.error("Error fetching favorites:", error);
+    console.error("Error insert favorites:", error);
   }
 }

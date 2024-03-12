@@ -17,8 +17,8 @@ module.exports = {
           key: 'id'
         },
       },
-      recipes_id: {
-        type: Sequelize.INTEGER,
+      recipe_id: {
+        type: Sequelize.STRING(500),
         allowNull: false
       },
       createdAt: {

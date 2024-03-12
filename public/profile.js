@@ -1,3 +1,5 @@
+const baseUrl = "http://localhost:8000";
+
 const searchInput = document.querySelector("#searchInput");
 const resultList = document.querySelector("#results");
 const searchbtn = document.querySelector("#submit");
@@ -31,54 +33,55 @@ function displayRecipes(recipes) {
                   .join("")}
             </ul>
             <a href="${recipe.recipe.url}" target="_blank">View Recipe</a>
-            <a type="button" class="favoriteBtn" onclick="addtoFavorites(${index})"}>Add to Favorites</a>
-        </div>   
+            <a type="button" class="favoriteBtn" onclick="addtoFavorites('${recipe.recipe.url}')">Add to Favorites</a>
+        </div>
         `;
   });
   resultList.innerHTML = html;
 }
 
-const favoriteBtn = document.querySelectorAll(".favoriteBtn");
-favoriteBtn.addEventListener("click", (e) => {
-  e.preventDefault();
-  addtoFavorites();
-});
-
-function addtoFavorites(index) {
-  const recipe = document.getElementById(`recipes-${index}`);
-
-//   if (!favoriteRecipesArray.includes(recipe)) {
-//     favoriteRecipesArray.push(recipe);
-//     updateFavoriteRecipesList();
-//   }
-}
-
-function updateFavoriteRecipesList() {
-  const favoriteRecipesList = document.getElementById("favoriteRecipesList");
-  favoriteRecipesList.innerHTML = "";
-
-  favoriteRecipesArray.forEach((recipe) => {
-    const listItem = document.createElement("li");
-    listItem.textContent = recipe.recipe.label;
-    favoriteRecipesList.appendChild(listItem);
+async function addtoFavorites(recipe_url) {
+  const payload = {
+    recipe_id: recipe_url,user_id:1
+  };
+  const response = await axios.post(`${baseUrl}/api/favorites`, payload).then((response)=> {
+    console.log("response48:", response);
+    return response;
   });
-
-  // Add a remove button for each favorite recipe
-  const removeButton = document.createElement("button");
-  removeButton.textContent = "Remove";
-  removeButton.addEventListener("click", function () {
-    // Call removeFavoriteRecipe function with the recipe index
-    removeFavoriteRecipe(favoriteRecipesArray.indexOf(recipe));
-  });
-  listItem.appendChild(removeButton);
-}
-
-function removeFavoriteRecipe(index) {
-  if (index > -1) {
-    // Remove the recipe from favoriteRecipesArray
-    favoriteRecipesArray.splice(index, 1);
-
-    // Update the favorite recipes list
-    updateFavoriteRecipesList();
+  if (response.status === 200) {
+    window.location.href = "favorite.html";
   }
 }
+const favoriteBtn = document.querySelectorAll(".favoriteBtn");
+
+
+
+// function updateFavoriteRecipesList() {
+//   const favoriteRecipesList = document.getElementById("favoriteRecipesList");
+//   favoriteRecipesList.innerHTML = "";
+
+//   favoriteRecipesArray.forEach((recipe) => {
+//     const listItem = document.createElement("li");
+//     listItem.textContent = recipe.recipe.label;
+//     favoriteRecipesList.appendChild(listItem);
+//   });
+
+//   // Add a remove button for each favorite recipe
+//   const removeButton = document.createElement("button");
+//   removeButton.textContent = "Remove";
+//   removeButton.addEventListener("click", function () {
+//     // Call removeFavoriteRecipe function with the recipe index
+//     removeFavoriteRecipe(favoriteRecipesArray.indexOf(recipe));
+//   });
+//   listItem.appendChild(removeButton);
+// }
+
+// function removeFavoriteRecipe(index) {
+//   if (index > -1) {
+//     // Remove the recipe from favoriteRecipesArray
+//     favoriteRecipesArray.splice(index, 1);
+
+//     // Update the favorite recipes list
+//     updateFavoriteRecipesList();
+//   }
+// }

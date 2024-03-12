@@ -26,10 +26,10 @@ if (loginForm) {
     usernameSign.value = "";
     passwordSign.value = "";
 
-    //console.log(`${SERVER}/api/signin`);
     console.log(payload);
 
     const response = await axios.post(`${baseUrl}/api/signin`, payload);
+    console.log("cookie32:", getCookieValue);
     if (response.status === 200) {
       window.location.href = "./profile.html";
     }
@@ -52,21 +52,25 @@ if (signupForm) {
 
     const response = await axios.post(`${baseUrl}/api/users`, payload);
     if (response.status === 200) {
-      window.location.href = "home.html";
+      // const {usernameSign} = response.data;
+      welcomeMessage.innerText = `Welcome to Cookit!`;
+      setTimeout(() => {
+        window.location.href = "home.html";
+      }, 4000);
     }
   });
 }
 
-if (welcomeMessage) {
-  const userId = getCookieValue("userid");
-  if (userId) {
-    axios.get(`${baseUrl}/api/users/${userId}`).then((response) => {
-      if (response.status === 200) {
-        const { username } = response.data;
-        welcomeMessageElement.innerText = `Welcome: ${username}!`;
-      }
-    });
-    // } else {
-    //     window.location = './home.html';
-  }
-}
+// if (welcomeMessage) {
+//   const userId = getCookieValue("userid");
+//   if (userId) {
+//     axios.get(`${baseUrl}/api/users/${userId}`).then((response) => {
+//       if (response.status === 200) {
+//         const { username } = response.data;
+//         welcomeMessageElement.innerText = `Welcome: ${username}!`;
+//       }
+//     });
+//     // } else {
+//     //     window.location = './home.html';
+//   }
+// }

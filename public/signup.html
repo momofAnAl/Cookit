@@ -33,20 +33,30 @@
     </section>
 
     <main>
-        <h1>New Cookiter!</h1>
+        <h1 id="newCookit">New Cookiter!</h1>
 
         <form id="sign-up-form" method="post">
 
             <div class="container">
-                <label for="username"><b>Username</b></label>
                 <input type="text" id="unameSign" placeholder="Create Username" name="username" required>
-                <label for="password"><b>Password</b></label>
+                <label for="username"><b>Username</b></label>
+                
                 <input type="password" id="pswSign" placeholder="Create Password" name="password" required>
+                <label for="password"><b>Password</b></label>
+
                 <button type="submit" id="signupBtn">Create new account</button>
             </div>
+            <div id="errorMessage" class="errorMessage"></div>
             <div id="welcome-message" class="welcome-message"></div>
         </form>
     </main>
+    <section id="image-media">
+      <div class="image-icons">
+        <a href="#"><img src="food1.jpg"></a>
+        <a href="#"><img src="food2.jpg"></a>
+        <a href="#"><img src="food3.jpg"></a>
+    </div>
+    </section>
     
     <footer>
         <p>&copy; 2024 Cookit. All rights reserved.</p>

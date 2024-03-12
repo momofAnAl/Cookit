@@ -2,11 +2,13 @@ const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
 
-const { authenticate, 
-  createUser, 
-  getUserInfo, 
-  getfavoritesByuserId, 
-  insertUserFavorites } = require("./main.js");
+const {
+  authenticate,
+  createUser,
+  getUserInfo,
+  getfavoritesByuserId,
+  insertUserFavorites,
+} = require("./main.js");
 
 const cookieParser = require("cookie-parser");
 
@@ -18,7 +20,6 @@ app.use(express.static("public"));
 app.use(cors());
 app.use(cookieParser());
 app.use(express.json());
-
 
 app.post("/api/users", async (req, res) => {
   const { username, password } = req.body;
@@ -56,6 +57,7 @@ app.get("/api/users/:id", async (req, res) => {
 // - if username or password are incorrect, returns 400 BAD REQUEST
 app.post("/api/signin", async (req, res) => {
   const { username, password } = req.body;
+  // res.cookie("anhtran", 1234);
 
   const authenticated = await authenticate(username, password);
   if (authenticated === null) {
@@ -67,24 +69,30 @@ app.post("/api/signin", async (req, res) => {
   res.cookie(USERID_KEY, authenticated.id, {
     maxAge: COOKIE_VALIDITY_DURATION,
   });
+  console.log("cookies71:", res.cookies);
   res.status(200).end();
 });
 
-app.get("/api/favorites/:userId", async(req, res) => {
-  const userId = req.params.userId;
+app.get("/api/favorites/:userId", async (req, res) => {
+  const userId = 1;
   const userFavorites = await getfavoritesByuserId(userId);
   console.log(userFavorites);
 
-  return res.json({userFavorites});
+  return res.json({ userFavorites });
 });
 
 app.post("/api/favorites", async (req, res) => {
-  console.log(req.body);
+  const {recipe_id, user_id} = req.body; //destructuring
+  console.log("call /api/favorites", req.body);
+  if (user_id === null || user_id === undefined) {
+    res.status(401).end();
+    return;
+  }
   
-  const {user_id, recipes_id} = req.body; //destructuring
-  const insertFavorites = await insertUserFavorites (user_id, recipes_id);
+  console.log("recipe_id in app.post: ", recipe_id);
+  const insertFavorites = await insertUserFavorites(user_id, recipe_id);
   console.log(insertFavorites);
-})
+});
 
 const { SERVER_PORT } = process.env;
 app.listen(SERVER_PORT, () => console.info(`app running on ${SERVER_PORT}`));

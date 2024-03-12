@@ -1,5 +1,11 @@
 body {
-    font-family: Arial, sans-serif;
+  background-image: url("foods.jpg");
+  background-size: cover;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
 }
 
 #nav-bar {
@@ -34,13 +40,23 @@ body {
 
 #logo-image {
     background-color: transparent;
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
     width: 100%;
-    height: auto;
-    position: center;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+#newCookit {
+  color: #f0f3f5;
+  font-weight: 600;
+  font-size: 45px;
+  margin: 5px;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+
+}
 .about-title {
     font-size: 18px;
     font-family: Arial, sans-serif;
@@ -48,33 +64,55 @@ body {
 }
 
 #about {
-    background: transparent;
-    display: block;
-    border-radius: 10px;
+    background: rgba(253, 253, 253, 0.349);
     padding-bottom: 50px;
     padding-top: 50px;
 
 }
+.container h1 {
+  color: #0d3c01da;
+  font-weight: 550;
+}
+.about-title {
+  font-weight: 400;
+  color:rgb(249, 248, 243); 
+  
+}
 
 #social-media p {
+  transform: translateY(150px);
+  color: #fbfbfbfd;
   font-size: 20px;
   font-weight: 600;
   margin-bottom: 30px;
 }
 .social-icons img {
+  transform: translateY(120px);
   width: 100px;
   transition: 0.5s;
 }
 .social-icons a:hover img {
   transform: translateY(-10px);
 }
-body {
-  background-image: url("foods.jpg");
-  font-family: Arial, sans-serif;
-  font-size: 16px;
-  line-height: 1.5;
-  margin: 0;
-  padding: 0;
+.image-icons {
+  display: flex; /* Use flexbox to align images in a row */
+  justify-content: center; /* Center the images horizontally */
+  transform: translateY(300px);
+  padding: 20px 0; /* Add padding to create space around images */
+  position: relative; /* Position container relatively */
+}
+
+.image-icons img {
+  width: 300px; /* Set the width of the images */
+  height: 200px;
+  transition: transform 0.5s; /* Add transition for hover effect */
+  border-radius: 25px;
+  opacity: 3;
+}
+
+.image-icons img:hover {
+  transform: translateY(-40px); /* Apply hover effect to lift images */
+  opacity: 1;
 }
 
 header {
@@ -91,16 +129,8 @@ ol {
   font-family: Arial, sans-serif;
 }
 
-h1 {
-  color: #028fcb;
-  font-size: 45px;
-  margin: 5px;
-  text-align: center;
-  font-family: "Courier New", Courier, monospace;
-}
-
 form {
-    background-color: rgba(231, 231, 231, 0.243); 
+    background-color: rgba(173, 173, 173, 0.588); 
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -138,7 +168,7 @@ button:hover {
   width: auto;
   border-radius: 80px;
   padding: 5px 20px;
-  background-color:#fa8ecb;
+  background-color:#f67a67;
 }
 
 /* Center the avatar image inside this container */
@@ -176,7 +206,7 @@ span.psw {
 @media screen and (max-width: 300px) {
   span.psw {
     display: block;
-    float: none;
+    float: 200px;
   }
   .cancelbtn {
     width: 100%;
