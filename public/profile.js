@@ -2,7 +2,7 @@ const baseUrl = "http://localhost:8000";
 
 const searchInput = document.querySelector("#searchInput");
 const resultList = document.querySelector("#results");
-const searchbtn = document.querySelector("#submit");
+const searchbtn = document.getElementById("searchbtn");
 
 searchbtn.addEventListener("click", (e) => {
   e.preventDefault();
@@ -16,6 +16,7 @@ async function searchRecipes() {
   );
   const data = await response.json();
   displayRecipes(data.hits);
+  console.log(data.hits);
 }
 
 let favoriteRecipesArray = [];
@@ -52,36 +53,3 @@ async function addtoFavorites(recipe_url) {
     window.location.href = "favorite.html";
   }
 }
-const favoriteBtn = document.querySelectorAll(".favoriteBtn");
-
-
-
-// function updateFavoriteRecipesList() {
-//   const favoriteRecipesList = document.getElementById("favoriteRecipesList");
-//   favoriteRecipesList.innerHTML = "";
-
-//   favoriteRecipesArray.forEach((recipe) => {
-//     const listItem = document.createElement("li");
-//     listItem.textContent = recipe.recipe.label;
-//     favoriteRecipesList.appendChild(listItem);
-//   });
-
-//   // Add a remove button for each favorite recipe
-//   const removeButton = document.createElement("button");
-//   removeButton.textContent = "Remove";
-//   removeButton.addEventListener("click", function () {
-//     // Call removeFavoriteRecipe function with the recipe index
-//     removeFavoriteRecipe(favoriteRecipesArray.indexOf(recipe));
-//   });
-//   listItem.appendChild(removeButton);
-// }
-
-// function removeFavoriteRecipe(index) {
-//   if (index > -1) {
-//     // Remove the recipe from favoriteRecipesArray
-//     favoriteRecipesArray.splice(index, 1);
-
-//     // Update the favorite recipes list
-//     updateFavoriteRecipesList();
-//   }
-// }

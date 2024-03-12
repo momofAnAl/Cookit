@@ -82,16 +82,14 @@ app.get("/api/favorites/:userId", async (req, res) => {
 });
 
 app.post("/api/favorites", async (req, res) => {
-  const {recipe_id, user_id} = req.body; //destructuring
+  const { recipe_id, user_id } = req.body; //destructuring
   console.log("call /api/favorites", req.body);
   if (user_id === null || user_id === undefined) {
     res.status(401).end();
     return;
   }
-  
-  console.log("recipe_id in app.post: ", recipe_id);
-  const insertFavorites = await insertUserFavorites(user_id, recipe_id);
-  console.log(insertFavorites);
+  await insertUserFavorites(user_id, recipe_id);
+  return res.json({ ...req.body });
 });
 
 const { SERVER_PORT } = process.env;

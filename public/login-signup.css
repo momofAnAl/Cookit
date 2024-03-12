@@ -80,14 +80,13 @@ body {
 }
 
 #social-media p {
-  transform: translateY(150px);
   color: #fbfbfbfd;
   font-size: 20px;
   font-weight: 600;
   margin-bottom: 30px;
 }
 .social-icons img {
-  transform: translateY(120px);
+  transform: translateY(-20px);
   width: 100px;
   transition: 0.5s;
 }
