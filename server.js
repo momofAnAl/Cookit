@@ -52,14 +52,12 @@ app.get("/api/users/:id", async (req, res) => {
   res.status(200).send(currentUser);
 });
 
-// sign-in to the app
-// - on SUCCESS sets a cookie with the current signed-in user's id
-// - if username or password are incorrect, returns 400 BAD REQUEST
 app.post("/api/signin", async (req, res) => {
   const { username, password } = req.body;
   // res.cookie("anhtran", 1234);
 
   const authenticated = await authenticate(username, password);
+  console.log("authenticated 61", authenticated);
   if (authenticated === null) {
     res.status(400).end();
     errorMessage.textContent = "Invalid username or password.";
@@ -69,16 +67,17 @@ app.post("/api/signin", async (req, res) => {
   res.cookie(USERID_KEY, authenticated.id, {
     maxAge: COOKIE_VALIDITY_DURATION,
   });
-  console.log("cookies71:", res.cookies);
+  console.log("cookies70:", res.cookie);
   res.status(200).end();
 });
 
-app.get("/api/favorites/:userId", async (req, res) => {
+app.get("/api/favorites", async (req, res) => {
   const userId = 1;
   const userFavorites = await getfavoritesByuserId(userId);
-  console.log(userFavorites);
+  console.log('app.get("/api/favorites")', userFavorites);
 
-  return res.json({ userFavorites });
+  // console.log("res.json(userFavorites).end():", res.json(userFavorites).end());
+  return res.json(userFavorites).end();
 });
 
 app.post("/api/favorites", async (req, res) => {

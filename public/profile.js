@@ -3,6 +3,33 @@ const baseUrl = "http://localhost:8000";
 const searchInput = document.querySelector("#searchInput");
 const resultList = document.querySelector("#results");
 const searchbtn = document.getElementById("searchbtn");
+const favoriteBtn = document.getElementById("favoritenavItem");
+
+favoriteBtn.addEventListener("click", async function () {
+  try {
+    const response = await displayFavoriteRecipes();
+    console.log('response in favoriteBtn.addEventListener("click")', response);
+    recipes = response.data;
+
+    console.log(recipes[0].recipe_id);
+
+    let html = "<ul>";
+    recipes.forEach((recipe) => {
+      html += `<li><a>${recipe.recipe_id}</a></li>`;
+      //   html += `<li><a href="${recipe.recipe_id}">${recipe.recipe_id}</a></li>`;
+      //   html += `<li><a href="${recipe.url}">${recipe.name}</a></li>`;
+    });
+    html += "</ul>";
+
+    console.log("html: ", html);
+
+    // document.getElementById("favoriteRecipesList").innerHTML = html;
+
+    // window.location.href = "favorite.html";
+  } catch (error) {
+    console.error("Error fetching and updating favorites:", error);
+  }
+});
 
 searchbtn.addEventListener("click", (e) => {
   e.preventDefault();
@@ -34,7 +61,9 @@ function displayRecipes(recipes) {
                   .join("")}
             </ul>
             <a href="${recipe.recipe.url}" target="_blank">View Recipe</a>
-            <a type="button" class="favoriteBtn" onclick="addtoFavorites('${recipe.recipe.url}')">Add to Favorites</a>
+            <a type="button" class="favoriteBtn" onclick="addtoFavorites('${
+              recipe.recipe.url
+            }')">Add to Favorites</a>
         </div>
         `;
   });
@@ -43,13 +72,33 @@ function displayRecipes(recipes) {
 
 async function addtoFavorites(recipe_url) {
   const payload = {
-    recipe_id: recipe_url,user_id:1
+    recipe_id: recipe_url,
+    user_id: 1,
   };
-  const response = await axios.post(`${baseUrl}/api/favorites`, payload).then((response)=> {
-    console.log("response48:", response);
-    return response;
-  });
+  const response = await axios
+    .post(`${baseUrl}/api/favorites`, payload)
+    .then((response) => {
+      // console.log("response48:", response);
+      return response;
+    });
   if (response.status === 200) {
     window.location.href = "favorite.html";
+  }
+}
+
+async function displayFavoriteRecipes() {
+  try {
+    const response = await axios
+      .get(`${baseUrl}/api/favorites`, {
+        params: {
+          userId: 1,
+        },
+      })
+      .then((response) => {
+        console.log("response in displayFavoriteRecipes(): ", response);
+        return response;
+      });
+  } catch (error) {
+    console.error("Error displayFavoriteRecipes():", error);
   }
 }
