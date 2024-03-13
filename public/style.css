@@ -185,3 +185,27 @@ footer {
   transform: translateX(-50%);
   width: 100%;
 }
+.favorite-item {
+  margin-bottom: 10px;
+  padding: 4px;
+  background-color: #ffffffaa;
+  font-weight: 400;
+  color: #02577b;
+  border-radius: 5px;
+}
+
+.delete-button {
+  background-color: #007bff;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 8px 15px;
+  transition: background-color 0.2s;
+}
+
+/* Hover effect for delete button */
+.delete-button:hover {
+  background-color: #63adfb;
+}

@@ -9,43 +9,42 @@ body {
 }
 
 #nav-bar {
-    position: sticky;
-    top: 0;
-    z-index: 10;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 .navbar {
-    background-image: linear-gradient(to right, #c8e0fa, #028fcb);
-    padding: 0 !important;
-
+  background-image: linear-gradient(to right, #c8e0fa, #028fcb);
+  padding: 0 !important;
 }
 .navbar-brand img {
-    height: 50px;
-    padding-left: 20px;
+  height: 50px;
+  padding-left: 20px;
 }
 
 .navbar-nav li {
-    padding: 0 10px
+  padding: 0 10px;
 }
 
 .navbar-nav li a {
-    color: #fff !important;
-    font-weight: 600;
-    float: right;
-    text-align: left;
+  color: #fff !important;
+  font-weight: 600;
+  float: right;
+  text-align: left;
 }
 
 .navbar-toggler {
-    outline: none !important;
+  outline: none !important;
 }
 
 #logo-image {
-    background-color: transparent;
-    display: flex;
-    justify-content: center;
-    padding-top: 10px;
-    width: 100%;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 #newCookit {
@@ -55,19 +54,17 @@ body {
   margin: 5px;
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;
-
 }
 .about-title {
-    font-size: 18px;
-    font-family: Arial, sans-serif;
-    font-weight: 400;
+  font-size: 18px;
+  font-family: Arial, sans-serif;
+  font-weight: 400;
 }
 
 #about {
-    background: rgba(253, 253, 253, 0.349);
-    padding-bottom: 50px;
-    padding-top: 50px;
-
+  background: rgba(253, 253, 253, 0.349);
+  padding-bottom: 50px;
+  padding-top: 50px;
 }
 .container h1 {
   color: #0d3c01da;
@@ -75,8 +72,7 @@ body {
 }
 .about-title {
   font-weight: 400;
-  color:rgb(249, 248, 243); 
-  
+  color: rgb(249, 248, 243);
 }
 
 #social-media p {
@@ -129,10 +125,10 @@ ol {
 }
 
 form {
-    background-color: rgba(173, 173, 173, 0.588); 
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: rgba(173, 173, 173, 0.588);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 input[type="text"],
@@ -147,7 +143,7 @@ input[type="password"] {
 }
 
 button {
-  background-color: #5ea9f8;
+  background-color: #1684f9;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
@@ -167,7 +163,7 @@ button:hover {
   width: auto;
   border-radius: 80px;
   padding: 5px 20px;
-  background-color:#f67a67;
+  background-color: #f67a67;
 }
 
 /* Center the avatar image inside this container */
@@ -179,11 +175,18 @@ button:hover {
 }
 
 .login-container {
-  display: flex; 
-  justify-content: center; 
-  align-items: center; 
-  height: 100vh; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
   border-radius: 10px;
+}
+
+#welcome-message {
+  color: #e7eee1;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 30px;
 }
 
 .imgcontainer {
@@ -223,3 +226,5 @@ footer {
   transform: translateX(-50%);
   width: 100%;
 }
+
+

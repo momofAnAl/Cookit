@@ -78,3 +78,16 @@ async function insertUserFavorites(userId, recipeId) {
     console.error("Error insert favorites:", error);
   }
 }
+
+async function deleteUserFavorites(userId, recipeId) {
+  try {
+    const SQL = `
+    DELETE FROM favorites 
+    WHERE user_id =${userId} AND 
+          recipe_id = '${recipeId}';`;
+    await sequelize.query(SQL);
+    return {};
+  } catch (error) {
+    console.error("Error delete favorites:", error);
+  }
+}

@@ -82,13 +82,18 @@ app.get("/api/favorites", async (req, res) => {
 
 app.post("/api/favorites", async (req, res) => {
   const { recipe_id, user_id } = req.body; //destructuring
-  console.log("call /api/favorites", req.body);
+  // console.log("call /api/favorites", req.body);
   if (user_id === null || user_id === undefined) {
     res.status(401).end();
     return;
   }
   await insertUserFavorites(user_id, recipe_id);
   return res.json({ ...req.body });
+});
+
+app.delete("/api/favorites/:userId/:recipeUrl", async (req,res) => {
+  const userId = parseInt(req.params.userId);
+  const recipeId = req.params.recipeId;
 });
 
 const { SERVER_PORT } = process.env;
