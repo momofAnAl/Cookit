@@ -14,8 +14,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const deleteButton = document.createElement("button");
     deleteButton.textContent = "Remove Favorite";
     deleteButton.classList.add("delete-button");
-    deleteButton.addEventListener("click", () => {
-      deleteFavorite(recipe_id);
+    deleteButton.addEventListener("click", async () => {
+      await deleteFavorite(1, recipe_id);
       li.remove();
     });
     li.appendChild(deleteButton);
@@ -25,7 +25,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 async function deleteFavorite(userId, recipeId) {
   try {
-    const response = axios.delete(`/api/favorites/${userId}/'${recipeId}'`);
+    const encodedUrl = encodeURIComponent(recipeId);
+    const url = `/api/favorites/${userId}/${encodedUrl}`
+    console.log(url);
+    const response = await axios.delete(`/api/favorites/${userId}/${encodedUrl}`);
     console.log("Favorite deleted successfully!")
     return response.data;
   } catch (error) {

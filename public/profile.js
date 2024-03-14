@@ -5,35 +5,11 @@ const resultList = document.querySelector("#results");
 const searchbtn = document.getElementById("searchbtn");
 const favoriteBtn = document.getElementById("favoritenavItem");
 
-// favoriteBtn.addEventListener("click", async function () {
-//   try {
-//     const response = await displayFavoriteRecipes();
-//     recipes = response.data;
-
-//     console.log(recipes[0].recipe_id);
-
-//     let html = "<ul>";
-//     recipes.forEach((recipe) => {
-//       //   html += `<li><a>${recipe.recipe_id}</a></li>`;
-//       html += `<li><a href="${recipe.recipe.label}">${recipe.recipe_id}</a></li>`;
-//     });
-//     html += "</ul>";
-
-//     console.log("html: ", html);
-
-//     document.getElementById("favoritenavItem").innerHTML = html;
-
-//     // window.location.href = "favorite.html";
-//   } catch (error) {
-//     console.error("Error fetching and updating favorites:", error);
-//   }
-// });
-favoriteBtn.addEventListener('click', async () => {
-    const favorites = await displayFavoriteRecipes(); 
-    localStorage.setItem('favorite', JSON.stringify(favorites));
-    window.location.href = 'favorite.html';
+favoriteBtn.addEventListener("click", async () => {
+  const favorites = await displayFavoriteRecipes();
+  localStorage.setItem("favorite", JSON.stringify(favorites));
+  window.location.href = "favorite.html";
 });
-
 
 searchbtn.addEventListener("click", (e) => {
   e.preventDefault();
@@ -75,14 +51,19 @@ function displayRecipes(recipes) {
 }
 
 async function addtoFavorites(recipe_url) {
+  // const userId = localStorage.getItem("userId");
+  // if (!userId) {
+  //   console.error("User ID not found in localStorage");
+  //   return; // Exit the function if userId is not found
+  // }
   const payload = {
     recipe_id: recipe_url,
     user_id: 1,
   };
+  // console.log("payload 58 profile.js", payload);
   const response = await axios
     .post(`${baseUrl}/api/favorites`, payload)
     .then((response) => {
-      // console.log("response48:", response);
       return response;
     });
   if (response.status === 200) {
@@ -99,7 +80,6 @@ async function displayFavoriteRecipes() {
     });
     console.log("response 100", response);
     return response;
-    
   } catch (error) {
     console.error("Error displayFavoriteRecipes():", error);
   }

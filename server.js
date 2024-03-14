@@ -8,6 +8,7 @@ const {
   getUserInfo,
   getfavoritesByuserId,
   insertUserFavorites,
+  deleteUserFavorites 
 } = require("./main.js");
 
 const cookieParser = require("cookie-parser");
@@ -54,10 +55,9 @@ app.get("/api/users/:id", async (req, res) => {
 
 app.post("/api/signin", async (req, res) => {
   const { username, password } = req.body;
-  // res.cookie("anhtran", 1234);
 
   const authenticated = await authenticate(username, password);
-  console.log("authenticated 61", authenticated);
+  // console.log("authenticated 61", authenticated);
   if (authenticated === null) {
     res.status(400).end();
     errorMessage.textContent = "Invalid username or password.";
@@ -68,7 +68,7 @@ app.post("/api/signin", async (req, res) => {
     maxAge: COOKIE_VALIDITY_DURATION,
   });
   console.log("cookies70:", res.cookie);
-  res.status(200).end();
+  return res.json({...authenticated,username});
 });
 
 app.get("/api/favorites", async (req, res) => {
@@ -93,11 +93,12 @@ app.post("/api/favorites", async (req, res) => {
 
 app.delete("/api/favorites/:userId/:recipeUrl", async (req, res) => {
   const userId = parseInt(req.params.userId);
-  const recipeId = req.params.recipeId;
+  // console.log("line 97 req.params", req.params.userId);
+  const recipeId = decodeURIComponent(req.params.recipeUrl);
+  // console.log(req.params.recipeId);
   try {
-    // Call deleteUserFavorites function to delete the favorite from the database
     await deleteUserFavorites(userId, recipeId);
-    res.status(204).send(); // Send 204 No Content response upon successful deletion
+    res.status(204).send();
   } catch (error) {
     console.error("Error deleting favorite:", error);
     res.status(500).json({ error: "Failed to delete favorite" });

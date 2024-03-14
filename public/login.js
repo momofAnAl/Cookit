@@ -26,11 +26,9 @@ if (loginForm) {
     usernameSign.value = "";
     passwordSign.value = "";
 
-    console.log(payload);
-
     const response = await axios.post(`${baseUrl}/api/signin`, payload);
-    console.log("cookie32:", getCookieValue);
     if (response.status === 200) {
+      // localStorage.setItem('userId', response.data.id);
       window.location.href = "./profile.html";
     }
   });

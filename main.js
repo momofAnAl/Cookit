@@ -7,8 +7,8 @@ const sequelize = new Sequelize({
   host: "localhost", // Specify your database host
   port: 5432, // Specify your database port
   username: LOCAL_DATABASE_USERNAME, // Specify your database username
-  password: LOCAL_DATABASE_USERNAME, // Specify your database password
-  database: "Cookit", // Specify your database name
+  password: LOCAL_DATABASE_USERNAME, 
+  database: "Cookit",
 });
 
 module.exports = {
@@ -17,13 +17,13 @@ module.exports = {
   getUserInfo,
   getfavoritesByuserId,
   insertUserFavorites,
+  deleteUserFavorites
 };
 
 async function authenticate(username, password) {
   const SQL = `
     SELECT id FROM users WHERE username = '${username}' AND password = '${password}';
     `;
-
   const [data] = await sequelize.query(SQL);
   if (data.length !== 1) {
     return null;
