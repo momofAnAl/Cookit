@@ -80,9 +80,10 @@ body {
   font-size: 20px;
   font-weight: 600;
   margin-bottom: 30px;
+  transform: translateY(100px);
 }
 .social-icons img {
-  transform: translateY(-20px);
+  transform: translateY(100px);
   width: 100px;
   transition: 0.5s;
 }

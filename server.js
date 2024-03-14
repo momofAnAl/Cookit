@@ -91,9 +91,17 @@ app.post("/api/favorites", async (req, res) => {
   return res.json({ ...req.body });
 });
 
-app.delete("/api/favorites/:userId/:recipeUrl", async (req,res) => {
+app.delete("/api/favorites/:userId/:recipeUrl", async (req, res) => {
   const userId = parseInt(req.params.userId);
   const recipeId = req.params.recipeId;
+  try {
+    // Call deleteUserFavorites function to delete the favorite from the database
+    await deleteUserFavorites(userId, recipeId);
+    res.status(204).send(); // Send 204 No Content response upon successful deletion
+  } catch (error) {
+    console.error("Error deleting favorite:", error);
+    res.status(500).json({ error: "Failed to delete favorite" });
+  }
 });
 
 const { SERVER_PORT } = process.env;

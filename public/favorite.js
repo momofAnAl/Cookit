@@ -16,10 +16,20 @@ document.addEventListener("DOMContentLoaded", () => {
     deleteButton.classList.add("delete-button");
     deleteButton.addEventListener("click", () => {
       deleteFavorite(recipe_id);
-      li.remove(); 
+      li.remove();
     });
     li.appendChild(deleteButton);
     recipeList.appendChild(li);
   });
 });
 
+async function deleteFavorite(userId, recipeId) {
+  try {
+    const response = axios.delete(`/api/favorites/${userId}/'${recipeId}'`);
+    console.log("Favorite deleted successfully!")
+    return response.data;
+  } catch (error) {
+    console.error("Error deleting favorite:", error);
+    throw error;
+  }
+}

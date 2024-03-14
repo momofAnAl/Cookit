@@ -61,16 +61,3 @@ if (signupForm) {
   });
 }
 
-// if (welcomeMessage) {
-//   const userId = getCookieValue("userid");
-//   if (userId) {
-//     axios.get(`${baseUrl}/api/users/${userId}`).then((response) => {
-//       if (response.status === 200) {
-//         const { username } = response.data;
-//         welcomeMessageElement.innerText = `Welcome: ${username}!`;
-//       }
-//     });
-//     // } else {
-//     //     window.location = './home.html';
-//   }
-// }

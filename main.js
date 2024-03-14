@@ -89,5 +89,6 @@ async function deleteUserFavorites(userId, recipeId) {
     return {};
   } catch (error) {
     console.error("Error delete favorites:", error);
+    throw error;
   }
 }
