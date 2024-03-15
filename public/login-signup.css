@@ -191,21 +191,20 @@ button:hover {
 }
 
 .imgcontainer {
-  text-align: center; /* Align text (and inline-block elements) to the center */
+  text-align: center; 
 }
 
 img.avatar {
-  width: 50%; /* Set the width of the image */
-  height: auto; /* Automatically adjust height to maintain aspect ratio */
+  width: 50%; 
+  height: auto; 
 }
 
-/* The "Forgot password" text */
+
 span.psw {
   float: right;
   padding-top: 16px;
 }
 
-/* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {
   span.psw {
     display: block;

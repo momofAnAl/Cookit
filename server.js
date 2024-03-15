@@ -28,28 +28,21 @@ app.post("/api/users", async (req, res) => {
     res.status(400).end();
     return;
   }
-
   await createUser(username, password);
-
   res.status(200).end();
 });
 
-// get user information by id (which comes from the cookie set when you logged in)
-// NOTE: this is not secure because the client could modify the cookie, but for
-//  the purpose of this example, it is sufficient
 app.get("/api/users/:id", async (req, res) => {
   const id = req.cookies[USERID_KEY];
   if (id === null || id === undefined) {
     res.status(401).end();
     return;
   }
-
   const currentUser = await getUserInfo(Number.parseInt(id));
   if (currentUser === null) {
     res.status(404).end();
     return;
   }
-
   res.status(200).send(currentUser);
 });
 
@@ -57,7 +50,6 @@ app.post("/api/signin", async (req, res) => {
   const { username, password } = req.body;
 
   const authenticated = await authenticate(username, password);
-  // console.log("authenticated 61", authenticated);
   if (authenticated === null) {
     res.status(400).end();
     errorMessage.textContent = "Invalid username or password.";
@@ -76,13 +68,12 @@ app.get("/api/favorites", async (req, res) => {
   const userFavorites = await getfavoritesByuserId(userId);
   console.log('app.get("/api/favorites")', userFavorites);
 
-  // console.log("res.json(userFavorites).end():", res.json(userFavorites).end());
+  // res.status(200).send(userFavorites);
   return res.json(userFavorites).end();
 });
 
 app.post("/api/favorites", async (req, res) => {
-  const { recipe_id, user_id } = req.body; //destructuring
-  // console.log("call /api/favorites", req.body);
+  const { recipe_id, user_id } = req.body;
   if (user_id === null || user_id === undefined) {
     res.status(401).end();
     return;
@@ -93,9 +84,7 @@ app.post("/api/favorites", async (req, res) => {
 
 app.delete("/api/favorites/:userId/:recipeUrl", async (req, res) => {
   const userId = parseInt(req.params.userId);
-  // console.log("line 97 req.params", req.params.userId);
   const recipeId = decodeURIComponent(req.params.recipeUrl);
-  // console.log(req.params.recipeId);
   try {
     await deleteUserFavorites(userId, recipeId);
     res.status(204).send();

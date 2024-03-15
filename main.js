@@ -67,7 +67,6 @@ async function getfavoritesByuserId(userId) {
 
 async function insertUserFavorites(userId, recipeId) {
   try {
-    console.log("recipeId: ", recipeId);
     const SQL = `
         INSERT INTO favorites (user_id, recipe_id) VALUES (${userId}, '${recipeId}');
         `;

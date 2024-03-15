@@ -3,13 +3,6 @@ const baseUrl = "http://localhost:8000";
 const searchInput = document.querySelector("#searchInput");
 const resultList = document.querySelector("#results");
 const searchbtn = document.getElementById("searchbtn");
-const favoriteBtn = document.getElementById("favoritenavItem");
-
-favoriteBtn.addEventListener("click", async () => {
-  const favorites = await displayFavoriteRecipes();
-  localStorage.setItem("favorite", JSON.stringify(favorites));
-  window.location.href = "favorite.html";
-});
 
 searchbtn.addEventListener("click", (e) => {
   e.preventDefault();
@@ -51,16 +44,10 @@ function displayRecipes(recipes) {
 }
 
 async function addtoFavorites(recipe_url) {
-  // const userId = localStorage.getItem("userId");
-  // if (!userId) {
-  //   console.error("User ID not found in localStorage");
-  //   return; // Exit the function if userId is not found
-  // }
   const payload = {
     recipe_id: recipe_url,
     user_id: 1,
   };
-  // console.log("payload 58 profile.js", payload);
   const response = await axios
     .post(`${baseUrl}/api/favorites`, payload)
     .then((response) => {
@@ -68,19 +55,5 @@ async function addtoFavorites(recipe_url) {
     });
   if (response.status === 200) {
     window.location.href = "favorite.html";
-  }
-}
-
-async function displayFavoriteRecipes() {
-  try {
-    const response = await axios.get(`${baseUrl}/api/favorites`, {
-      params: {
-        userId: 1,
-      },
-    });
-    console.log("response 100", response);
-    return response;
-  } catch (error) {
-    console.error("Error displayFavoriteRecipes():", error);
   }
 }
