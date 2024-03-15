@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
+SERVER_PORT=8000
 
 const {
   authenticate,
@@ -95,5 +96,4 @@ app.delete("/api/favorites/:userId/:recipeUrl", async (req, res) => {
   }
 });
 
-const { SERVER_PORT } = process.env;
 app.listen(SERVER_PORT, () => console.info(`app running on ${SERVER_PORT}`));
