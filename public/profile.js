@@ -1,4 +1,4 @@
-const baseUrl = "http://localhost:8000";
+const baseUrl = "http://34.217.46.133:8000";
 
 const searchInput = document.querySelector("#searchInput");
 const resultList = document.querySelector("#results");

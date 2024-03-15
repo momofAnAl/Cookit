@@ -1,4 +1,4 @@
-const baseUrl = "http://localhost:8000";
+const baseUrl = "http://34.217.46.133:8000";
 
 const loginForm = document.querySelector("#loginForm");
 const signupForm = document.querySelector("#sign-up-form");
