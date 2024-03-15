@@ -17,7 +17,8 @@ const USERID_KEY = "id";
 const COOKIE_VALIDITY_DURATION = 10 * 60 * 1000; // 10 mins expressed in ms
 
 const app = express();
-app.use(express.static("public"));
+// app.use(express.static("public"));
+app.use(express.static(`${__dirname}/public`));
 app.use(cors());
 app.use(cookieParser());
 app.use(express.json());
