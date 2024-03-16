@@ -1,5 +1,5 @@
 # Cookit Website
-[![JavaScript](https://img.shields.io/badge/logo-javascript-blue?logo=javascript)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![JavaScript](https://img.shields.io/badge/javascript-blue?logo=javascript)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 [![CSS](https://img.shields.io/badge/CSS-yellow?logo=css3)](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/CSS_basics)
 [![HTML](https://img.shields.io/badge/HTML-orange?logo=html5)](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/HTML_basics)
 
