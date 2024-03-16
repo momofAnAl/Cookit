@@ -42,7 +42,6 @@ body {
   display: flex;
   justify-content: center;
   padding-top: 10px;
-  width: 100%;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -55,36 +54,37 @@ body {
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;
 }
-.about-title {
+/* .about-title {
   font-size: 18px;
   font-family: Arial, sans-serif;
   font-weight: 400;
-}
+} */
 
 #about {
   background: rgba(253, 253, 253, 0.349);
-  padding-bottom: 50px;
-  padding-top: 50px;
+  padding-bottom: 10px;
+  padding-top: 10px;
 }
 .container h1 {
   color: #0d3c01da;
   font-weight: 550;
 }
 .about-title {
-  font-weight: 400;
-  color: rgb(249, 248, 243);
+  font-size: 20px;
+  font-weight: 600;
+  color: rgb(253, 253, 252);
 }
 
 #social-media p {
   color: #fbfbfbfd;
   font-size: 20px;
   font-weight: 600;
-  margin-bottom: 30px;
-  transform: translateY(100px);
+  margin-bottom: 5px;
+  transform: translateY(10px);
 }
 .social-icons img {
-  transform: translateY(100px);
-  width: 100px;
+  transform: translateY(5px);
+  width: 80px;
   transition: 0.5s;
 }
 .social-icons a:hover img {
@@ -93,7 +93,7 @@ body {
 .image-icons {
   display: flex; /* Use flexbox to align images in a row */
   justify-content: center; /* Center the images horizontally */
-  transform: translateY(300px);
+  transform: translateY(200px);
   padding: 20px 0; /* Add padding to create space around images */
   position: relative; /* Position container relatively */
 }
@@ -219,7 +219,7 @@ footer {
   background-color: #5ea9f8;
   color: #fff;
   text-align: center;
-  padding: 10px 0;
+  padding: 5px 0;
   position: fixed;
   bottom: 0;
   left: 50%;
