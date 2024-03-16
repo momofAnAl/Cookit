@@ -34,8 +34,8 @@ Install npm: `npm install`
 
 ## Screenshots
 <p align="center">
-  <img src="Cookit2.png" width="350" height="450">
-  <img src="Cookit3.png" width="350" height="450">
+  <img src="Cookit2.png" width="350">
+  <img src="Cookit3.png" width="350">
 </p>
 
 ## Instructions for Installation
