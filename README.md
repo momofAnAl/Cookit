@@ -57,13 +57,5 @@ Cookit is continuously evolving. Here are some upcoming features:
 ## Demo
 (http://localhost:8000/home.html)
 
-## Challenges and Handling
-Building Cookit came with its challenges, but I overcame them through:
-- Breaking down the project into manageable tasks
-- Seeking guidance from lectures, lab works, and online resources
-- Peer code reviews and bug squashing sessions with Michael and Vinson
-- Proper use of async/await and error handling techniques
-- Utilization of server-side validation for URL handling
-
 ## Conclusion
 Thank you for joining me on this journey with Cookit! Stay tuned for more updates and happy cooking!
