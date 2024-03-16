@@ -1,7 +1,7 @@
 # Cookit Website
-[![Language](https://img.shields.io/badge/logo-javascript-blue?logo=javascript)
-(https://img.shields.io/badge/CSS) (https://img.shields.io/badge/HTML)
-]
+[![JavaScript](https://img.shields.io/badge/logo-javascript-blue?logo=javascript)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![CSS](https://img.shields.io/badge/CSS-yellow?logo=css3)](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/CSS_basics)
+[![HTML](https://img.shields.io/badge/HTML-orange?logo=html5)](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/HTML_basics)
 
 ## Project Description
 Cookit is your ultimate recipe finder, designed to simplify meal planning by suggesting recipes based on the ingredients you have on hand.
@@ -34,8 +34,8 @@ Install npm: `npm install`
 
 ## Screenshots
 <p align="center">
-  <img src="Cookit2.png" width="350">
-  <img src="Cookit3.png" width="350">
+  <img src="Cookit2.png" width="350" height="450">
+  <img src="Cookit3.png" width="350" height="450">
 </p>
 
 ## Instructions for Installation
